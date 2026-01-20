@@ -1,0 +1,572 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Во все Руки - Аутсорсинг грузчиков и разнорабочих в Красноярске</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome для иконок -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary-color: #1a756e;
+            --secondary-color: #f8f9fa;
+            --text-color: #333;
+            --light-gray: #e9ecef;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            color: var(--text-color);
+            line-height: 1.6;
+        }
+        
+        .navbar {
+            background-color: white;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        
+        .navbar-brand {
+            font-weight: bold;
+            font-size: 1.5rem;
+        }
+        
+        .nav-link {
+            font-weight: 500;
+        }
+        
+        .btn-primary {
+            background-color: var(--primary-color);
+            border-color: var(--primary-color);
+            padding: 0.5rem 1.5rem;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+        
+        .btn-primary:hover {
+            background-color: #155d57;
+            border-color: #155d57;
+            transform: translateY(-2px);
+        }
+        
+        .hero-section {
+            padding: 5rem 0;
+            background-color: white;
+        }
+        
+        .hero-content {
+            max-width: 600px;
+        }
+        
+        .hero-title {
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+        }
+        
+        .services-section {
+            padding: 5rem 0;
+            background-color: var(--secondary-color);
+        }
+        
+        .services-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 3rem;
+            text-align: center;
+        }
+        
+        .service-card {
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+        }
+        
+        .service-img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-top-left-radius: 10px;
+            border-top-right-radius: 10px;
+        }
+        
+        .service-content {
+            padding: 1.5rem;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .service-title {
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+        
+        .service-price {
+            font-weight: 600;
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+        }
+        
+        .trust-section {
+            padding: 5rem 0;
+            background-color: var(--light-gray);
+            text-align: center;
+        }
+        
+        .trust-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+        }
+        
+        .trust-steps {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        .step {
+            margin: 1.5rem 0;
+            padding: 1.5rem;
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+        }
+        
+        .about-section {
+            padding: 5rem 0;
+            background-color: white;
+        }
+        
+        .about-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+        
+        .about-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .faq-section {
+            padding: 5rem 0;
+            background-color: var(--secondary-color);
+        }
+        
+        .faq-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 3rem;
+            text-align: center;
+        }
+        
+        .faq-item {
+            border-bottom: 1px solid #dee2e6;
+            margin-bottom: 1rem;
+            padding: 1rem 0;
+        }
+        
+        .faq-question {
+            font-weight: 600;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0.75rem 1rem;
+            background-color: white;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+        
+        .faq-question:hover {
+            background-color: #f8f9fa;
+        }
+        
+        .faq-answer {
+            padding: 1rem;
+            background-color: white;
+            border-radius: 5px;
+            margin-top: 0.5rem;
+            display: none;
+        }
+        
+        .footer {
+            background-color: #343a40;
+            color: white;
+            padding: 2rem 0;
+            text-align: center;
+        }
+        
+        .footer a {
+            color: #adb5bd;
+            text-decoration: none;
+        }
+        
+        .footer a:hover {
+            color: white;
+        }
+        
+        /* Анимации */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+        
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        @media (max-width: 768px) {
+            .hero-title {
+                font-size: 2.5rem;
+            }
+            
+            .services-title {
+                font-size: 2rem;
+            }
+            
+            .trust-title {
+                font-size: 2rem;
+            }
+            
+            .about-title {
+                font-size: 2rem;
+            }
+            
+            .faq-title {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Навигация -->
+    <nav class="navbar navbar-expand-lg navbar-light">
+        <div class="container">
+            <a class="navbar-brand" href="#">Во все Руки</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#services">Services</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#contact"><i class="fas fa-phone-alt me-2"></i></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link btn btn-primary" href="#contact">Contact Us</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Геройский блок -->
+    <section class="hero-section" id="home">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-6 hero-content">
+                    <h1 class="hero-title">Во все Руки</h1>
+                    <p>Аутсорсинг грузчиков и разнорабочих — это практическое решение для оптимизации операционной деятельности строительных и складских организаций. С нами вы сможете оперативно решить вопросы отсутствия сотрудников, срочной подмены или найма нового специалиста. Наши клиенты получают готовое решение по предоставлению линейного персонала и специалистов без задержек, сокращают издержки и освобождают внутренние отделы HR и бухгалтерии от рутинных процессов. Работаем по городу Красноярску — от одного работника до масштабных команд. Быстрый поиск сотрудников, индивидуальные условия, строгий контроль вывода людей на объекты и полная документация. Оставьте заявку. Менеджер свяжется в ближайшее время, уточнит стоимость и предложит конкретные варианты сотрудничества.</p>
+                    <a href="#contact" class="btn btn-primary mt-3">Call Us</a>
+                </div>
+                <div class="col-lg-6 text-center">
+                    <img src="https://via.placeholder.com/600x400?text=Команда+Профессионалов" alt="Команда профессионалов" class="img-fluid rounded">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Услуги -->
+    <section class="services-section" id="services">
+        <div class="container">
+            <h2 class="services-title">Наши услуги</h2>
+            <div class="row">
+                <div class="col-md-4 mb-4">
+                    <div class="service-card">
+                        <img src="https://via.placeholder.com/400x250?text=Складские+работы" alt="Складские работы" class="service-img">
+                        <div class="service-content">
+                            <h3 class="service-title">Складские работы</h3>
+                            <p class="service-price">Смена от 3700/8 часов<br>от 5600/12 часов</p>
+                            <p>Профессиональное выполнение складских операций: сортировка, такелажные работы, упаковка и учет товара.</p>
+                            <a href="#contact" class="btn btn-primary mt-auto">Call Us</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <div class="service-card">
+                        <img src="https://via.placeholder.com/400x250?text=Услуги+грузчиков" alt="Услуги грузчиков" class="service-img">
+                        <div class="service-content">
+                            <h3 class="service-title">Услуги грузчиков</h3>
+                            <p class="service-price">от 460/ час</p>
+                            <p>Предоставляем квалифицированных грузчиков для погрузочно-разгрузочных работ любой сложности, квартирные, офисные переезды, вывоз мусора в Красноярске.</p>
+                            <a href="#contact" class="btn btn-primary mt-auto">Call Us</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <div class="service-card">
+                        <img src="https://via.placeholder.com/400x250?text=Услуги+разнорабочих" alt="Услуги разнорабочих" class="service-img">
+                        <div class="service-content">
+                            <h3 class="service-title">Услуги разнорабочих</h3>
+                            <p class="service-price">от 460/ час<br>Смена от 3700/8 часов</p>
+                            <p>Общестроительные работы, демонтаж, вынос строительного мусора, стропальщики и тд.</p>
+                            <a href="#contact" class="btn btn-primary mt-auto">Call Us</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Надежные руки -->
+    <section class="trust-section">
+        <div class="container">
+            <h2 class="trust-title">Надежные руки для решения самых сложных задач!</h2>
+            <p>Как мы работаем?</p>
+            <div class="trust-steps">
+                <div class="step">
+                    <p><strong>Оставьте заявку</strong> - Свяжитесь любым удобным вам способом</p>
+                </div>
+                <div class="step">
+                    <p><strong>Оперативно оценим объем и стоимость работ</strong></p>
+                </div>
+                <div class="step">
+                    <p><strong>Приступим к выполнению работ точно в срок</strong></p>
+                </div>
+            </div>
+            <a href="#contact" class="btn btn-primary mt-4">Call Us</a>
+        </div>
+    </section>
+
+    <!-- О компании -->
+    <section class="about-section">
+        <div class="container">
+            <h2 class="about-title">Профессиональный аутсорсинг линейного персонала в Красноярске от Во все Руки</h2>
+            <div class="about-content">
+                <h3>Экспертность и опыт в сфере аутсорсинга</h3>
+                <p>Компания Во все Руки, базирующаяся в Красноярске, специализируется на аутсорсе линейного персонала, предлагая квалифицированных грузчиков и разнорабочих. Наш многолетний опыт позволяет нам быстро и эффективно подбирать специалистов, которые идеально подходят под требования клиентов. Мы понимаем, что качественный персонал — залог успеха любого предприятия, и уделяем особое внимание профессионализму и надежности наших сотрудников.</p>
+                
+                <h3 class="mt-4">Широкий спектр услуг для вашего бизнеса</h3>
+                <p>Во все Руки предоставляет полный комплекс услуг по подбору и обеспечению линейного персонала для различных отраслей, включая складские операции, строительные работы и логистику. Мы предлагаем гибкие решения для временного и постоянного привлечения рабочей силы, что позволяет нашим клиентам оптимизировать затраты и повысить производительность. Наша команда гарантирует своевременное выполнение задач и высокое качество работы на каждом этапе сотрудничества.</p>
+                
+                <h3 class="mt-4">Преимущества сотрудничества с нами</h3>
+                <p>Выбирая Во все Руки, вы получаете надежного партнера, который позаботится о ваших бизнес-потребностях. Мы обеспечиваем прозрачные условия работы, конкурентоспособные цены и индивидуальный подход к каждому клиенту. Благодаря нашей оперативности и ответственному отношению, вы можете быть уверены в стабильности и качестве предоставляемых услуг. Доверьте линейный персонал профессионалам и сосредоточьтесь на развитии вашего бизнеса!</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ -->
+    <section class="faq-section">
+        <div class="container">
+            <h2 class="faq-title">Часто задаваемые вопросы</h2>
+            <div class="accordion" id="faqAccordion">
+                <div class="faq-item">
+                    <div class="faq-question" data-bs-toggle="collapse" data-bs-target="#faq1">
+                        Как быстро можно заказать услуги?
+                        <i class="fas fa-chevron-up"></i>
+                    </div>
+                    <div id="faq1" class="collapse faq-answer">
+                        Если у вас большой объем работ — лучше позвонить за сутки, а вообще — среднее время прибытия грузчиков и транспорта 60 минут.
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question" data-bs-toggle="collapse" data-bs-target="#faq2">
+                        Какие услуги предоставляет ваша компания?
+                        <i class="fas fa-chevron-up"></i>
+                    </div>
+                    <div id="faq2" class="collapse faq-answer">
+                        Мы предоставляем услуги аутсорсинга линейного персонала, включая грузчиков и разнорабочих. Переезды и вывоз мусора.
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question" data-bs-toggle="collapse" data-bs-target="#faq3">
+                        Можно ли изменить количество заказанного персонала после оформления заявки?
+                        <i class="fas fa-chevron-up"></i>
+                    </div>
+                    <div id="faq3" class="collapse faq-answer">
+                        Да, вы можете изменить количество персонала, уведомив нас заранее для корректировки заказа.
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question" data-bs-toggle="collapse" data-bs-target="#faq4">
+                        Как оформить заказ на услуги?
+                        <i class="fas fa-chevron-up"></i>
+                    </div>
+                    <div id="faq4" class="collapse faq-answer">
+                        Для оформления заказа свяжитесь с нами по телефону или через форму обратной связи на сайте, мы уточним детали и согласуем условия.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Контакты -->
+    <section id="contact" class="py-5 bg-light">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-8">
+                    <div class="card shadow-sm">
+                        <div class="card-body">
+                            <h3 class="card-title text-center mb-4">Свяжитесь с нами</h3>
+                            <form id="contactForm">
+                                <div class="mb-3">
+                                    <label for="name" class="form-label">Имя</label>
+                                    <input type="text" class="form-control" id="name" required>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="phone" class="form-label">Телефон</label>
+                                    <input type="tel" class="form-control" id="phone" required>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="email" class="form-label">Email</label>
+                                    <input type="email" class="form-control" id="email">
+                                </div>
+                                <div class="mb-3">
+                                    <label for="service" class="form-label">Услуга</label>
+                                    <select class="form-select" id="service" required>
+                                        <option selected disabled>Выберите услугу</option>
+                                        <option>Складские работы</option>
+                                        <option>Услуги грузчиков</option>
+                                        <option>Услуги разнорабочих</option>
+                                        <option>Другое</option>
+                                    </select>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="message" class="form-label">Сообщение</label>
+                                    <textarea class="form-control" id="message" rows="5" placeholder="Опишите вашу задачу..."></textarea>
+                                </div>
+                                <div class="text-center">
+                                    <button type="submit" class="btn btn-primary">Отправить заявку</button>
+                                </div>
+                            </form>
+                            <div id="formMessage" class="mt-3" style="display: none;"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Футер -->
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2026 Во все Руки. Все права защищены.</p>
+            <p>Красноярск, Россия</p>
+        </div>
+    </footer>
+
+    <!-- Bootstrap JS и jQuery -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <script>
+        $(document).ready(function() {
+            // Анимация появления элементов при прокрутке
+            function checkFadeIn() {
+                $('.fade-in').each(function() {
+                    var elementTop = $(this).offset().top;
+                    var elementBottom = elementTop + $(this).outerHeight();
+                    var viewportTop = $(window).scrollTop();
+                    var viewportBottom = viewportTop + $(window).height();
+                    
+                    if (elementBottom > viewportTop && elementTop < viewportBottom) {
+                        $(this).addClass('visible');
+                    }
+                });
+            }
+            
+            // Инициализация анимации при загрузке страницы
+            $(window).on('load', function() {
+                checkFadeIn();
+            });
+            
+            // Проверка анимации при прокрутке
+            $(window).on('scroll', function() {
+                checkFadeIn();
+            });
+            
+            // Анимация для карточек услуг
+            $('.service-card').each(function(index) {
+                $(this).css('animation-delay', index * 0.1 + 's');
+            });
+            
+            // Обработка формы обратной связи
+            $('#contactForm').on('submit', function(e) {
+                e.preventDefault();
+                
+                // Валидация формы
+                var name = $('#name').val().trim();
+                var phone = $('#phone').val().trim();
+                var service = $('#service').val();
+                
+                if (!name || !phone || !service) {
+                    showMessage('Пожалуйста, заполните обязательные поля', 'danger');
+                    return;
+                }
+                
+                // Имитация отправки формы
+                setTimeout(function() {
+                    showMessage('Ваша заявка успешно отправлена! Мы свяжемся с вами в ближайшее время.', 'success');
+                    $('#contactForm')[0].reset();
+                }, 1000);
+            });
+            
+            // Функция для отображения сообщений
+            function showMessage(message, type) {
+                var messageDiv = $('#formMessage');
+                messageDiv.removeClass('alert-success alert-danger').addClass('alert alert-' + type).text(message).fadeIn();
+                
+                // Скрыть сообщение через 5 секунд
+                setTimeout(function() {
+                    messageDiv.fadeOut();
+                }, 5000);
+            }
+            
+            // Анимация для FAQ
+            $('.faq-question').on('click', function() {
+                var $answer = $(this).next('.faq-answer');
+                var $icon = $(this).find('i');
+                
+                // Закрыть другие ответы
+                $('.faq-answer').not($answer).slideUp();
+                $('.faq-question i').not($icon).removeClass('fa-chevron-down').addClass('fa-chevron-up');
+                
+                // Переключить текущий ответ
+                $answer.slideToggle();
+                $icon.toggleClass('fa-chevron-up fa-chevron-down');
+            });
+            
+            // Плавный скролл к якорям
+            $('a[href^="#"]').on('click', function(e) {
+                e.preventDefault();
+                var target = this.hash;
+                var $target = $(target);
+                
+                $('html, body').stop().animate({
+                    'scrollTop': $target.offset().top - 70
+                }, 900, 'swing', function() {
+                    window.location.hash = target;
+                });
+            });
+        });
+    </script>
+</body>
+</html>
